@@ -30,7 +30,7 @@ PREMIUM_MESSAGE = (
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     keyboard = [
         [InlineKeyboardButton("💎 Get Premium", callback_data="get_premium")],
-        [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/SexyEmoji")]
+        [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/+bzLmBT9OeKRlMjU1")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     
@@ -59,7 +59,7 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     elif query.data == "back":
         keyboard = [
             [InlineKeyboardButton("💎 Get Premium", callback_data="get_premium")],
-            [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/SexyEmoji")]
+            [InlineKeyboardButton("🎥 Premium Demo", url")]
         ]
         await query.edit_message_media(
             media={"type": "photo", "media": START_IMAGE, "caption": START_MESSAGE},
