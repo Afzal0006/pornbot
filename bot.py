@@ -1,42 +1,22 @@
-from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+import asyncio
+from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 
-BOT_TOKEN = "8357734886:AAGSfpBQZufnd_PtTsgFSX92UiS1i0iKDbQ"
+BOT_TOKEN = "YOUR_BOT_TOKEN_HERE"
 
-START_MESSAGE = """
-> 📢 Direct P\\#rn Video Channel 🌸  
->  
-> D\\#si Maal Ke Deewano Ke Liye 😋  
->  
-> No Sn\\#ps Pure D\\#si Maal 😙  
->  
-> 51000+ rare D\\#si le\\#ks ever.... 🎀  
->  
-> Just pay and get entry...  
->  
-> Direct video No Link \\- Ads Sh\\#t 🔥  
->  
-> 💰 Price :- ₹69/-
-> ♾️ Validity :- lifetime
-"""
+MESSAGE = (
+    "Just pay and get entry...\n"
+    "Just pay and get entry...Just pay and get entry...Just pay and get entry...Just pay and get entry...Just pay and get entry..."
+)
 
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    keyboard = [
-        [InlineKeyboardButton("🎬 DEMO", url="https://t.me/your_demo_channel")],
-        [InlineKeyboardButton("💰 Buy Now", url="https://t.me/your_payment_bot")]
-    ]
-    reply_markup = InlineKeyboardMarkup(keyboard)
-
-    await update.message.reply_text(
-        START_MESSAGE,
-        reply_markup=reply_markup,
-        parse_mode="MarkdownV2"
-    )
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    await update.message.reply_text(MESSAGE)
 
 def main():
     app = Application.builder().token(BOT_TOKEN).build()
     app.add_handler(CommandHandler("start", start))
+    print("Bot started successfully ✅")
     app.run_polling(close_loop=False)
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
