@@ -2,7 +2,7 @@ import asyncio
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, ContextTypes, CallbackQueryHandler
 
-BOT_TOKEN = "8350094964:AAE-ebwWQBx_YWnW_stEqcxiKKVVx8SZaAw"
+BOT_TOKEN = "8350094964:AAGuq7wGITTob4ASpHj6dxDmVIxppqNlhBY"
 
 START_MESSAGE = (
     "Direct P#rn Video Channel 🌸\n\n"
@@ -23,8 +23,11 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/SexyEmoji")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    await update.message.delete()
-    await update.message.reply_text(START_MESSAGE, reply_markup=reply_markup)
+    await update.message.reply_text(
+        START_MESSAGE,
+        reply_markup=reply_markup,
+        reply_to_message_id=update.message.message_id
+    )
 
 async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     query = update.callback_query
