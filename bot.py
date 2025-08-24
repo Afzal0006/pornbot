@@ -1,5 +1,5 @@
 import asyncio
-from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, InputMediaPhoto
 from telegram.ext import Application, CommandHandler, ContextTypes, CallbackQueryHandler
 
 BOT_TOKEN = "8231280897:AAESZBm1WJ3xslx3VBU5tKXRK1fXqe42XE0"
@@ -48,21 +48,20 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if query.data == "get_premium":
         keyboard = [
             [InlineKeyboardButton("🔙 Back", callback_data="back")],
-            [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/SexyEmoji")]
+            [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/+bzLmBT9OeKRlMjU1")]
         ]
-        # send new photo + caption (replace old message)
         await query.edit_message_media(
-            media={"type": "photo", "media": PREMIUM_IMAGE, "caption": PREMIUM_MESSAGE},
+            media=InputMediaPhoto(PREMIUM_IMAGE, caption=PREMIUM_MESSAGE),
             reply_markup=InlineKeyboardMarkup(keyboard)
         )
     
     elif query.data == "back":
         keyboard = [
             [InlineKeyboardButton("💎 Get Premium", callback_data="get_premium")],
-            [InlineKeyboardButton("🎥 Premium Demo", url")]
+            [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/+bzLmBT9OeKRlMjU1")]
         ]
         await query.edit_message_media(
-            media={"type": "photo", "media": START_IMAGE, "caption": START_MESSAGE},
+            media=InputMediaPhoto(START_IMAGE, caption=START_MESSAGE),
             reply_markup=InlineKeyboardMarkup(keyboard)
         )
 
