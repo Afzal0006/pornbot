@@ -4,6 +4,8 @@ from telegram.ext import Application, CommandHandler, ContextTypes, CallbackQuer
 
 BOT_TOKEN = "7607621887:AAHVpaKwitszMY9vfU2-s0n60QNL56rdbM0"
 
+IMAGE_URL = "https://i.ibb.co/Mk5jTp1s/x.jpg"
+
 START_MESSAGE = (
     "Direct P#rn Video Channel 🌸\n\n"
     "D#si Maal Ke Deewano Ke Liye 😋\n\n"
@@ -27,22 +29,25 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/SexyEmoji")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    await update.message.reply_text(
-        START_MESSAGE,
+    
+    # Send image + caption instead of plain text
+    await update.message.reply_photo(
+        photo=IMAGE_URL,
+        caption=START_MESSAGE,
         reply_markup=reply_markup,
-        reply_to_message_id=update.message.message_id,
-        do_quote=True
     )
 
 async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     query = update.callback_query
     await query.answer()
+    
     if query.data == "get_premium":
         keyboard = [
             [InlineKeyboardButton("🔙 Back", callback_data="back")],
             [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/SexyEmoji")]
         ]
         await query.edit_message_text(PREMIUM_MESSAGE, reply_markup=InlineKeyboardMarkup(keyboard))
+    
     elif query.data == "back":
         keyboard = [
             [InlineKeyboardButton("💎 Get Premium", callback_data="get_premium")],
