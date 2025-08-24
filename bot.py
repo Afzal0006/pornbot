@@ -2,10 +2,13 @@ import asyncio
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, ContextTypes, CallbackQueryHandler
 
-BOT_TOKEN = "7607621887:AAHVpaKwitszMY9vfU2-s0n60QNL56rdbM0"
+BOT_TOKEN = "8231280897:AAESZBm1WJ3xslx3VBU5tKXRK1fXqe42XE0"
 
-IMAGE_URL = "https://i.ibb.co/Mk5jTp1s/x.jpg"
+# Image URLs
+START_IMAGE = "https://i.ibb.co/Mk5jTp1s/x.jpg"
+PREMIUM_IMAGE = "https://i.ibb.co/7tm7hNpf/x.jpg"
 
+# Messages
 START_MESSAGE = (
     "Direct P#rn Video Channel 🌸\n\n"
     "D#si Maal Ke Deewano Ke Liye 😋\n\n"
@@ -23,6 +26,7 @@ PREMIUM_MESSAGE = (
     "𝗦𝗘𝗡𝗗 𝗦𝗖𝗥𝗘𝗘𝗡𝗦𝗛𝗢𝗧 @MMSWALA069 💖"
 )
 
+# Start command
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     keyboard = [
         [InlineKeyboardButton("💎 Get Premium", callback_data="get_premium")],
@@ -30,13 +34,13 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     
-    # Send image + caption instead of plain text
     await update.message.reply_photo(
-        photo=IMAGE_URL,
+        photo=START_IMAGE,
         caption=START_MESSAGE,
         reply_markup=reply_markup,
     )
 
+# Button actions
 async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     query = update.callback_query
     await query.answer()
@@ -46,15 +50,23 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
             [InlineKeyboardButton("🔙 Back", callback_data="back")],
             [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/SexyEmoji")]
         ]
-        await query.edit_message_text(PREMIUM_MESSAGE, reply_markup=InlineKeyboardMarkup(keyboard))
+        # send new photo + caption (replace old message)
+        await query.edit_message_media(
+            media={"type": "photo", "media": PREMIUM_IMAGE, "caption": PREMIUM_MESSAGE},
+            reply_markup=InlineKeyboardMarkup(keyboard)
+        )
     
     elif query.data == "back":
         keyboard = [
             [InlineKeyboardButton("💎 Get Premium", callback_data="get_premium")],
             [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/SexyEmoji")]
         ]
-        await query.edit_message_text(START_MESSAGE, reply_markup=InlineKeyboardMarkup(keyboard))
+        await query.edit_message_media(
+            media={"type": "photo", "media": START_IMAGE, "caption": START_MESSAGE},
+            reply_markup=InlineKeyboardMarkup(keyboard)
+        )
 
+# Main function
 def main():
     app = Application.builder().token(BOT_TOKEN).build()
     app.add_handler(CommandHandler("start", start))
