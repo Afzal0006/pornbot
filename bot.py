@@ -2,7 +2,7 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, ContextTypes
 
 # Replace with your bot token
-BOT_TOKEN = "8350094964:AAGuq7wGITTob4ASpHj6dxDmVIxppqNlhBY"
+BOT_TOKEN = "8350094964:AAFD3iZEag9NqXw_KbpnRvUj2gL6yLB8Yy8"
 
 # New Start message (quote style using MarkdownV2)
 START_MESSAGE = """
