@@ -15,7 +15,11 @@ START_MESSAGE = (
     "Validity :- lifetime"
 )
 
-PREMIUM_MESSAGE = "Hlo dm for premium @golgibody"
+PREMIUM_MESSAGE = (
+    "𝗣𝗮𝘆 𝗝𝘂𝘀𝘁 ₹𝟲𝟵/- 𝗔𝗻𝗱 𝗚𝗲𝘁 𝗟𝗶𝗳𝗲𝘁𝗶𝗺𝗲 𝗔𝗰𝗰𝗲𝘀𝘀 🔥\n\n"
+    "𝗦𝗲𝗻𝗱 𝗦𝗦 𝗮𝗳𝘁𝗲𝗿 𝗽𝗮𝘆𝗺𝗲𝗻𝘁🦋✅\n\n"
+    "𝗦𝗘𝗡𝗗 𝗦𝗖𝗥𝗘𝗘𝗡𝗦𝗛𝗢𝗧 @MMSWALA069 💖"
+)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     keyboard = [
@@ -26,7 +30,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(
         START_MESSAGE,
         reply_markup=reply_markup,
-        reply_to_message_id=update.message.message_id
+        reply_to_message_id=update.message.message_id,
+        do_quote=True
     )
 
 async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -37,15 +42,13 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
             [InlineKeyboardButton("🔙 Back", callback_data="back")],
             [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/SexyEmoji")]
         ]
-        reply_markup = InlineKeyboardMarkup(keyboard)
-        await query.edit_message_text(PREMIUM_MESSAGE, reply_markup=reply_markup)
+        await query.edit_message_text(PREMIUM_MESSAGE, reply_markup=InlineKeyboardMarkup(keyboard))
     elif query.data == "back":
         keyboard = [
             [InlineKeyboardButton("💎 Get Premium", callback_data="get_premium")],
             [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/SexyEmoji")]
         ]
-        reply_markup = InlineKeyboardMarkup(keyboard)
-        await query.edit_message_text(START_MESSAGE, reply_markup=reply_markup)
+        await query.edit_message_text(START_MESSAGE, reply_markup=InlineKeyboardMarkup(keyboard))
 
 def main():
     app = Application.builder().token(BOT_TOKEN).build()
