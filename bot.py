@@ -8,16 +8,16 @@ BOT_TOKEN = "8231280897:AAESZBm1WJ3xslx3VBU5tKXRK1fXqe42XE0"
 START_IMAGE = "https://i.ibb.co/Mk5jTp1s/x.jpg"
 PREMIUM_IMAGE = "https://i.ibb.co/7tm7hNpf/x.jpg"
 
-# Messages
+# Updated START_MESSAGE
 START_MESSAGE = (
-    "Direct P#rn Video Channel 🌸\n\n"
-    "D#si Maal Ke Deewano Ke Liye 😋\n\n"
-    "No Sn#ps Pure D#si Maal 😙\n\n"
-    "51000+ rare D#si le#ks ever.... 🎀\n\n"
-    "Just pay and get entry...\n\n"
-    "Direct video No Link - Ads Sh#t 🔥\n\n"
-    "Price :- ₹69/-\n\n"
-    "Validity :- lifetime"
+    "𝗗𝗶𝗿𝗲𝗰𝘁 𝗣#𝗿𝗻 𝗩𝗶𝗱𝗲𝗼 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 🌸\n\n"
+    "𝗗#𝘀𝗶 𝗠𝗮𝗮𝗹 𝗞𝗲 𝗗𝗲𝗲𝘄𝗮𝗻𝗼 𝗞𝗲 𝗟𝗶𝘆𝗲 😋\n\n"
+    "𝗡𝗼 𝗦𝗻#𝗽𝘀 𝗣𝘂𝗿𝗲 𝗗#𝘀𝗶 𝗠𝗮𝗮𝗹 😙\n\n"
+    "𝟱𝟭𝟬𝟬𝟬+ 𝗿𝗮𝗿𝗲 𝗗#𝘀𝗶 𝗹𝗲#𝗸𝘀 𝗲𝘃𝗲𝗿.... 🎀\n\n"
+    "𝗝𝘂𝘀𝘁 𝗽𝗮𝘆 𝗮𝗻𝗱 𝗴𝗲𝘁 𝗲𝗻𝘁𝗿𝘆...\n\n"
+    "𝗗𝗶𝗿𝗲𝗰𝘁 𝘃𝗶𝗱𝗲𝗼 𝗡𝗼 𝗟𝗶𝗻𝗸 - 𝗔𝗱𝘀 𝗦𝗵#𝘁 🔥\n\n"
+    "𝗣𝗿𝗶𝗰𝗲 :- ₹𝟲𝟵/-\n\n"
+    "𝗩𝗮𝗹𝗶𝗱𝗶𝘁𝘆 :- 𝗹𝗶𝗳𝗲𝘁𝗶𝗺𝗲"
 )
 
 PREMIUM_MESSAGE = (
