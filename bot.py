@@ -1,10 +1,10 @@
 import asyncio
-from telegram import Update
-from telegram.ext import Application, CommandHandler, ContextTypes
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import Application, CommandHandler, ContextTypes, CallbackQueryHandler
 
-BOT_TOKEN = "8350094964:AAE-ebwWQBx_YWnW_stEqcxiKKVVx8SZaAw"
+BOT_TOKEN = "YOUR_BOT_TOKEN_HERE"
 
-MESSAGE = (
+START_MESSAGE = (
     "Direct P#rn Video Channel 🌸\n\n"
     "D#si Maal Ke Deewano Ke Liye 😋\n\n"
     "No Sn#ps Pure D#si Maal 😙\n\n"
@@ -15,13 +15,32 @@ MESSAGE = (
     "Validity :- lifetime"
 )
 
+PREMIUM_MESSAGE = "Hlo dm for premium @golgibody"
+
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    keyboard = [[InlineKeyboardButton("💎 Get Premium", callback_data="get_premium")]]
+    reply_markup = InlineKeyboardMarkup(keyboard)
     await update.message.delete()
-    await update.message.reply_text(MESSAGE)
+    await update.message.reply_text(START_MESSAGE, reply_markup=reply_markup)
+
+async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    query = update.callback_query
+    await query.answer()
+
+    if query.data == "get_premium":
+        keyboard = [[InlineKeyboardButton("🔙 Back", callback_data="back")]]
+        reply_markup = InlineKeyboardMarkup(keyboard)
+        await query.edit_message_text(PREMIUM_MESSAGE, reply_markup=reply_markup)
+
+    elif query.data == "back":
+        keyboard = [[InlineKeyboardButton("💎 Get Premium", callback_data="get_premium")]]
+        reply_markup = InlineKeyboardMarkup(keyboard)
+        await query.edit_message_text(START_MESSAGE, reply_markup=reply_markup)
 
 def main():
     app = Application.builder().token(BOT_TOKEN).build()
     app.add_handler(CommandHandler("start", start))
+    app.add_handler(CallbackQueryHandler(button))
     print("Bot started successfully ✅")
     app.run_polling(close_loop=False)
 
