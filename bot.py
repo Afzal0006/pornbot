@@ -1,7 +1,7 @@
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, ContextTypes
 
-BOT_TOKEN = "8350094964:AAGuq7wGITTob4ASpHj6dxDmVIxppqNlhBY"
+BOT_TOKEN = "8357734886:AAGSfpBQZufnd_PtTsgFSX92UiS1i0iKDbQ"
 
 START_MESSAGE = """
 > 📢 Direct P\\#rn Video Channel 🌸  
