@@ -8,6 +8,16 @@ BOT_TOKEN = "8231280897:AAESZBm1WJ3xslx3VBU5tKXRK1fXqe42XE0"
 START_IMAGE = "https://i.ibb.co/Mk5jTp1s/x.jpg"
 PREMIUM_IMAGE = "https://i.ibb.co/7tm7hNpf/x.jpg"
 
+HOT_PICS = [
+    "https://i.ibb.co/3yYH5r0W/x.jpg",
+    "https://i.ibb.co/kstmLD9h/x.jpg",
+    "https://i.ibb.co/nMy83gDg/x.jpg",
+    "https://i.ibb.co/TxLF4sQK/x.jpg",
+    "https://i.ibb.co/4hXwFwy/x.jpg",
+    "https://i.ibb.co/ht5VQ9R/x.jpg",
+    "https://i.ibb.co/JFCQnVG8/x.jpg",
+]
+
 # Messages
 START_MESSAGE = (
     "𝗗𝗶𝗿𝗲𝗰𝘁 𝗣#𝗿𝗻 𝗩𝗶𝗱𝗲𝗼 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 🌸\n\n"
@@ -29,7 +39,10 @@ PREMIUM_MESSAGE = (
 # Start command
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     keyboard = [
-        [InlineKeyboardButton("💎 Get Premium", callback_data="get_premium")],
+        [
+            InlineKeyboardButton("💎 Get Premium", callback_data="get_premium"),
+            InlineKeyboardButton("🥵 Hot Pics", callback_data="hotpics_0"),  # start from index 0
+        ],
         [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/+bzLmBT9OeKRlMjU1")],
         [InlineKeyboardButton("✅ SELLING PROOFS", url="https://t.me/MMSWALAPROOFS")]
     ]
@@ -45,7 +58,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     query = update.callback_query
     await query.answer()
-    
+
     if query.data == "get_premium":
         keyboard = [
             [InlineKeyboardButton("🔙 Back", callback_data="back")],
@@ -56,15 +69,38 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
             media=InputMediaPhoto(PREMIUM_IMAGE, caption=PREMIUM_MESSAGE),
             reply_markup=InlineKeyboardMarkup(keyboard)
         )
-    
+
     elif query.data == "back":
         keyboard = [
-            [InlineKeyboardButton("💎 Get Premium", callback_data="get_premium")],
+            [
+                InlineKeyboardButton("💎 Get Premium", callback_data="get_premium"),
+                InlineKeyboardButton("🥵 Hot Pics", callback_data="hotpics_0"),
+            ],
             [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/+bzLmBT9OeKRlMjU1")],
             [InlineKeyboardButton("✅ SELLING PROOFS", url="https://t.me/MMSWALAPROOFS")]
         ]
         await query.edit_message_media(
             media=InputMediaPhoto(START_IMAGE, caption=START_MESSAGE),
+            reply_markup=InlineKeyboardMarkup(keyboard)
+        )
+
+    elif query.data.startswith("hotpics_"):
+        index = int(query.data.split("_")[1])
+        photo = HOT_PICS[index]
+
+        keyboard = []
+        nav_buttons = []
+        if index > 0:
+            nav_buttons.append(InlineKeyboardButton("⏮️ Previous", callback_data=f"hotpics_{index-1}"))
+        if index < len(HOT_PICS) - 1:
+            nav_buttons.append(InlineKeyboardButton("⏭️ Next", callback_data=f"hotpics_{index+1}"))
+        if nav_buttons:
+            keyboard.append(nav_buttons)
+
+        keyboard.append([InlineKeyboardButton("🔙 Back", callback_data="back")])
+
+        await query.edit_message_media(
+            media=InputMediaPhoto(photo, caption=f"🔥 Hot Pic {index+1}/{len(HOT_PICS)}"),
             reply_markup=InlineKeyboardMarkup(keyboard)
         )
 
