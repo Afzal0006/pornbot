@@ -30,7 +30,7 @@ PREMIUM_MESSAGE = (
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     keyboard = [
         [InlineKeyboardButton("💎 Get Premium", callback_data="get_premium")],
-        [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/+bzLmBT9OeKRlMjU1")],
+        [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/+4oHNZ-_bMUg4OTNl")],
         [InlineKeyboardButton("✅ SELLING PROOFS", url="https://t.me/MMSWALAPROOFS")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
