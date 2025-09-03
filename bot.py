@@ -50,7 +50,7 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         keyboard = [
             [InlineKeyboardButton("🔙 Back", callback_data="back")],
             [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/+JPXKK3e60q81ZGFl")],
-            [InlineKeyboardButton("✅ SELLING PROOFS", url="https://t.me/MMSWALAPROOFS")]
+            [InlineKeyboardButton("✅ SELLING PROOFS", url="https://t.me/mmsbotproof")]
         ]
         await query.edit_message_media(
             media=InputMediaPhoto(PREMIUM_IMAGE, caption=PREMIUM_MESSAGE),
@@ -61,7 +61,7 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         keyboard = [
             [InlineKeyboardButton("💎 Get Premium", callback_data="get_premium")],
             [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/+4oHNZ-_bMUg4OTNl")],
-            [InlineKeyboardButton("✅ SELLING PROOFS", url="https://t.me/MMSWALAPROOFS")]
+            [InlineKeyboardButton("✅ SELLING PROOFS", url="https://t.me/mmsbotproof")]
         ]
         await query.edit_message_media(
             media=InputMediaPhoto(START_IMAGE, caption=START_MESSAGE),
