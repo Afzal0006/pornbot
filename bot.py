@@ -2,7 +2,7 @@ import asyncio
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, InputMediaPhoto
 from telegram.ext import Application, CommandHandler, ContextTypes, CallbackQueryHandler
 
-BOT_TOKEN = "8355485098:AAGM2RIlfWz8DvoYXnvhJbBpec1Dv0AfOy0"
+BOT_TOKEN = "8324804826:AAHpW5I3hstdEw9pbfI8NyFSpWP57JRVIPs"
 
 # Image URLs
 START_IMAGE = "https://i.ibb.co/Mk5jTp1s/x.jpg"
@@ -31,7 +31,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     keyboard = [
         [InlineKeyboardButton("💎 Get Premium", callback_data="get_premium")],
         [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/+JPXKK3e60q81ZGFl")],
-        [InlineKeyboardButton("✅ SELLING PROOFS", url="https://t.me/MMSWALAPROOFS")]
+        [InlineKeyboardButton("✅ SELLING PROOFS", url="https://t.me/mmsbotproof")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     
