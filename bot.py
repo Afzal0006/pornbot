@@ -31,7 +31,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     keyboard = [
         [InlineKeyboardButton("💎 Get Premium", callback_data="get_premium")],
         [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/+6Vjdhr8FFbZmYjA1")],
-        [InlineKeyboardButton("✅ SELLING PROOFS", url="https://t.me/mmsbotproof")]
+        [InlineKeyboardButton("✅ SELLING PROOFS", url="https://t.me/mmsbhaiproof")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     
@@ -50,7 +50,7 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         keyboard = [
             [InlineKeyboardButton("🔙 Back", callback_data="back")],
             [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/+6Vjdhr8FFbZmYjA1")],
-            [InlineKeyboardButton("✅ SELLING PROOFS", url="https://t.me/mmsbotproof")]
+            [InlineKeyboardButton("✅ SELLING PROOFS", url="https://t.me/mmsbhaiproof")]
         ]
         await query.edit_message_media(
             media=InputMediaPhoto(PREMIUM_IMAGE, caption=PREMIUM_MESSAGE),
@@ -61,7 +61,7 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         keyboard = [
             [InlineKeyboardButton("💎 Get Premium", callback_data="get_premium")],
             [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/+6Vjdhr8FFbZmYjA1")],
-            [InlineKeyboardButton("✅ SELLING PROOFS", url="https://t.me/mmsbotproof")]
+            [InlineKeyboardButton("✅ SELLING PROOFS", url="https://t.me/mmsbhaiproof")]
         ]
         await query.edit_message_media(
             media=InputMediaPhoto(START_IMAGE, caption=START_MESSAGE),
