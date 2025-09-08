@@ -2,7 +2,7 @@ import asyncio
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, InputMediaPhoto
 from telegram.ext import Application, CommandHandler, ContextTypes, CallbackQueryHandler
 
-BOT_TOKEN = "7528213223:AAFU3DvM7uDJ8inNx4qoZiXj7vIIED-pGF4"
+BOT_TOKEN = "8229496805:AAEUDhTxTsBQsaXfpwcJjIZBuwK5h2FHo3M"
 
 # Image URLs
 START_IMAGE = "https://i.ibb.co/Mk5jTp1s/x.jpg"
