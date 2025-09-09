@@ -30,7 +30,7 @@ PREMIUM_MESSAGE = (
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     keyboard = [
         [InlineKeyboardButton("💎 Get Premium", callback_data="get_premium")],
-        [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/+RY3smOCVcdM4Zjhl")],
+        [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/+nfSL70ptD3NhN2Y1")],
         [InlineKeyboardButton("✅ SELLING PROOFS", url="https://t.me/+8me1hbUoaZkxYmVl")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
@@ -49,7 +49,7 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if query.data == "get_premium":
         keyboard = [
             [InlineKeyboardButton("🔙 Back", callback_data="back")],
-            [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/+RY3smOCVcdM4Zjhl")],
+            [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/+nfSL70ptD3NhN2Y1")],
             [InlineKeyboardButton("✅ SELLING PROOFS", url="https://t.me/+8me1hbUoaZkxYmVl")]
         ]
         await query.edit_message_media(
@@ -60,7 +60,7 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     elif query.data == "back":
         keyboard = [
             [InlineKeyboardButton("💎 Get Premium", callback_data="get_premium")],
-            [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/+RY3smOCVcdM4Zjhl")],
+            [InlineKeyboardButton("🎥 Premium Demo", url="https://t.me/+nfSL70ptD3NhN2Y1")],
             [InlineKeyboardButton("✅ SELLING PROOFS", url="https://t.me/+8me1hbUoaZkxYmVl")]
         ]
         await query.edit_message_media(
