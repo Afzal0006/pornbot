@@ -136,7 +136,7 @@ async def stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
     await update.message.reply_text(text)
 
-# ==== Premium Command ====
+# ==== Premium Command (Fixed Auto-Create) ====
 async def premium(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.effective_user.id not in OWNER_IDS:
         await update.message.reply_text("⛔ You are not allowed to use this command.")
@@ -148,14 +148,18 @@ async def premium(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     target = context.args[0]
 
-    query = {"_id": int(target)} if target.isdigit() else {"username": target.lstrip("@")}
-    user = users_col.find_one(query)
-    if not user:
-        await update.message.reply_text("❌ User not found in database.")
-        return
+    # Agar number hai to user_id, warna username
+    if target.isdigit():
+        query = {"_id": int(target)}
+        doc = {"_id": int(target), "is_premium": True}
+    else:
+        query = {"username": target.lstrip("@")}
+        doc = {"username": target.lstrip("@"), "is_premium": True}
 
-    users_col.update_one(query, {"$set": {"is_premium": True}})
-    name = f"@{user.get('username')}" if user.get("username") else str(user.get("_id"))
+    # Auto-create or update
+    users_col.update_one(query, {"$set": doc}, upsert=True)
+
+    name = target if target.startswith("@") else f"user_id {target}"
     await update.message.reply_text(f"✅ {name} added to Premium List")
 
 # ==== Premium List Command ====
